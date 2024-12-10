@@ -1,0 +1,17 @@
+---
+# tasks file for TP_INI
+
+ - name: "Crear Grupos"
+   become: true
+   ansible.builtin.group:
+     name: "{{ item }}"
+     state: present 
+   loop: "{{ grupos }}"
+ 
+ - name: "Crear usuarios y asignarlos a grupos"
+   become: true
+   ansible.builtin.user:
+     name: "{{ item.name }}"
+     groups: "{{ item.groups }}"
+     state: present
+   loop: "{{ usuarios }}"

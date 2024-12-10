@@ -1,0 +1,12 @@
+---
+# tasks file for TP_INI
+
+- name: "Instalar programas"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - htop
+    - tmux
+    - speedtest-cli
